@@ -1,0 +1,30 @@
+spring:
+   application:
+      name: stock_data_spider
+   datasource:
+      username: root
+      password: 1234
+      url: jdbc:mysql://47.95.208.69:3306/stock_spider?useUnicode=true&amp;characterEncoding=UTF-8
+      driver-class-name: com.mysql.jdbc.Driver
+      hikari:
+         minimum-idle: 5
+         maximum-pool-size: 15
+         auto-commit: true
+         idle-timeout: 30000
+         pool-name: stock_spider_pool
+         max-lifetime: 1800000
+         connection-timeout: 30000
+         connection-test-query: select 1
+server:
+   port: 10001
+#mybatis:
+#   configuration:
+#      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+eureka:
+   server:
+      enable-self-preservation: false
+   client:
+      service-url:
+         defaultZone: http://localhost:${server.port}/eureka/
+      fetch-registry: false
+      register-with-eureka: false
